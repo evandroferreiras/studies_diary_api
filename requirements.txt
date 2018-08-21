@@ -1,2 +1,4 @@
 flask
 flask-restplus
+Flask-SQLAlchemy
+pytest
