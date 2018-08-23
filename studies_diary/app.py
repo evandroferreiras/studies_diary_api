@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint
 from studies_diary.restplus import api
-from studies_diary.endpoints.helloworld import HelloWorld
-from studies_diary.endpoints.category import CategoriesCollection, CategoriesItem
+from studies_diary.endpoints.helloworld import ns_default
+from studies_diary.endpoints.category import ns_category
 from studies_diary.db import config_db
 from studies_diary.log import log
 
@@ -17,9 +17,8 @@ def initialize_app(app):
     api.init_app(blueprint)
     app.register_blueprint(blueprint)
 
-    api.add_resource(HelloWorld)
-    api.add_resource(CategoriesCollection)
-    api.add_resource(CategoriesItem)
+    api.add_namespace(ns_default)
+    api.add_namespace(ns_category)
 
 
 def main():
