@@ -1,5 +1,5 @@
 from studies_diary.restplus import api
-from flask_restplus import Resource
+from flask_restx import Resource
 from studies_diary.serializers.category import category_serializer
 from studies_diary.business.category import CategoryBus
 

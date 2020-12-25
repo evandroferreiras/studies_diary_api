@@ -1,6 +1,6 @@
 import traceback
 from studies_diary.log import log
-from flask_restplus import Api
+from flask_restx import Api
 from sqlalchemy.orm.exc import NoResultFound
 
 api = Api(version='1.0', title='Study Diary API',

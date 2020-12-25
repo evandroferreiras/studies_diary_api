@@ -1,4 +1,4 @@
 flask
-flask-restplus
+flask_restx
 Flask-SQLAlchemy
 pytest
