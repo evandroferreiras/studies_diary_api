@@ -1,3 +1,5 @@
+""" Módulo app => inicialização da aplicação Flask
+"""
 from flask import Flask, Blueprint
 from studies_diary.restplus import api
 from studies_diary.endpoints.helloworld import ns_default
@@ -9,14 +11,23 @@ app = Flask(__name__)
 
 
 def initialize_app(app):
+    # RESTPLUS_VALIDATE => True, habilita um comportamento de validação dos campos esperados em cada requisição
     app.config['RESTPLUS_VALIDATE'] = True
+    # ERROR_404_HELP => False, desabilita uma mensagem de erro padrão
     app.config['ERROR_404_HELP'] = False
 
     config_db(app)
+    # Flask Blueprint cria componentes para a aplicação. É como se fosse a “planta” de sua API.
     blueprint = Blueprint('api', __name__)
     api.init_app(blueprint)
     app.register_blueprint(blueprint)
 
+    # RESTPlus (restx) utiliza o conceito de Resources e Namespaces.
+    # Um Resource é basicamente a representação de algum endpoint da sua API.
+    # E um Namespace é um conjunto de Resources.
+    # Nesse exemplo, ambos são definidos no diretório /studies_diary/endpoints.
+    # Para que a API reconheça a existência destes Namespaces,
+    # é necessário adiciona-los utilizando a função api.add_Namespace()
     api.add_namespace(ns_default)
     api.add_namespace(ns_category)
 

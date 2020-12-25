@@ -7,7 +7,7 @@ import sys
 
 class TestFlaskApiUsingRequests(unittest.TestCase):
     def test_hello_world(self):
-        response = requests.get('http://localhost:5000')
+        response = requests.get('http://localhost:5000/hello')
         self.assertEqual(response.json(), {'hello': 'world'})
 
 
